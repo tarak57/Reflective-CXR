@@ -15,29 +15,24 @@ Reflective-CXR/
 │   ├── mean_pooled_triage_gate.py      # Mean-pooled patch feature extraction & calibrated gate
 │   └── multi_gpu_inference_runner.py   # Multi-device batched inference pipeline
 ├── notebooks/                   # Step-by-step experiment notebooks
-│   ├── 01_baseline_densenet_nih.ipynb
-│   ├── 02_vit_biogpt_fusion_prototype.ipynb
-│   ├── 03_augmented_data_prototype.ipynb
-│   ├── 04_triage_gate_training.ipynb
-│   ├── 05_triage_gate_evaluation.ipynb
-│   ├── 06_results_and_plots.ipynb
-│   ├── 07_feature_extraction.ipynb
-│   ├── 08_sample_inference.ipynb
-│   └── 09_ablation_study.ipynb
-└── experiments/                 # Historical prototypes & ablation scripts
-    ├── README.md                # Description of experimental progression
-    ├── ablation_feature_dimensions.py
-    ├── dual_generation_consistency.py
-    ├── gate_cls_logistic_regression.py
-    ├── inference_vectorized_logits.py
-    └── single_pass_negative_logits.py
+│   ├── 01_baseline_densenet_benchmark.ipynb        # Supervised DenseNet-121 baseline on NIH ChestX-ray14
+│   ├── 02_vision_language_pretraining.ipynb        # ViT-B/16 + BioGPT LoRA pretraining on IU X-Ray
+│   ├── 03_feature_representation_extraction.ipynb  # 768-D mean-pooled feature caching on NIH
+│   ├── 04_calibrated_triage_gate.ipynb             # Consensus hard-negative mining & isotonic calibration
+│   ├── 05_clinical_evaluation_and_audit.ipynb      # Cohort validation, VinDr-VQA spatial grounding & Gradio UI
+│   ├── 06_publication_figures_and_plots.ipynb      # Reliability diagrams, ROC/PR curves & threshold sweeps
+│   └── 07_representation_ablation_study.ipynb      # Feature pooling comparisons & bootstrapping CIs
+└── experiments/                 # Dedicated ablation studies
+    ├── README.md                        # Overview of sensitivity analyses
+    ├── ablation_feature_dimensions.py   # Triage coverage vs. dimensionality tradeoff
+    └── dual_generation_consistency.py   # Consistency analysis vs. steered generation
 ```
 
 ---
 
 ## Pipeline Overview
 
-1. **Vision-Language Pretraining**: ViT-B/16 image encoder stitched with BioGPT causal language model, fine-tuned with LoRA on paired radiograph-report data (IU X-Ray).
+1. **Vision-Language Pretraining**: ViT-B/16 image encoder coupled with a BioGPT causal language model, fine-tuned with LoRA on paired radiograph-report data (IU X-Ray).
 2. **Feature Extraction**: 768-dimensional mean-pooled spatial patch representations extracted from the frozen vision backbone across NIH ChestX-ray14.
 3. **Calibrated Triage Gating**: Non-linear classifier with isotonic calibration determining Normal, Abnormal, or Uncertain status.
 4. **Constrained Generation**: Steered decoding with targeted negative logit suppression to mitigate clinical hallucinations.
@@ -49,7 +44,7 @@ Reflective-CXR/
 ### 1. Environment Installation
 
 ```bash
-git clone https://github.com/<username>/Reflective-CXR.git
+git clone https://github.com/tarak57/Reflective-CXR.git
 cd Reflective-CXR
 pip install -r requirements.txt
 ```

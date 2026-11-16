@@ -27,7 +27,7 @@ print("==================================================")
 # ---------------------------------------------------------
 # 0. RESUME CHECKPOINT HANDLER
 # ---------------------------------------------------------
-INPUT_CHECKPOINT = '/kaggle/input/datasets/tarak577/v11-salvage/V11_PRO_MERGED_SALVAGE.csv'
+INPUT_CHECKPOINT = os.getenv("INPUT_CHECKPOINT", "checkpoints/merged_audit_checkpoint.csv")
 WORKING_DESTINATION = '/kaggle/working/v11_pro_audit.csv'
 
 if os.path.exists(INPUT_CHECKPOINT) and not os.path.exists(WORKING_DESTINATION):
