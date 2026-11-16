@@ -14,7 +14,7 @@ Reflective-CXR/
 ├── src/                         # Core production modules
 │   ├── mean_pooled_triage_gate.py      # Mean-pooled patch feature extraction & calibrated gate
 │   └── multi_gpu_inference_runner.py   # Multi-device batched inference pipeline
-├── notebooks/                   # Step-by-step experiment notebooks
+├── notebooks/                   # Canonical end-to-end research pipeline
 │   ├── 01_baseline_densenet_benchmark.ipynb        # Supervised DenseNet-121 baseline on NIH ChestX-ray14
 │   ├── 02_vision_language_pretraining.ipynb        # ViT-B/16 + BioGPT LoRA pretraining on IU X-Ray
 │   ├── 03_feature_representation_extraction.ipynb  # 768-D mean-pooled feature caching on NIH
@@ -22,10 +22,11 @@ Reflective-CXR/
 │   ├── 05_clinical_evaluation_and_audit.ipynb      # Cohort validation, VinDr-VQA spatial grounding & Gradio UI
 │   ├── 06_publication_figures_and_plots.ipynb      # Reliability diagrams, ROC/PR curves & threshold sweeps
 │   └── 07_representation_ablation_study.ipynb      # Feature pooling comparisons & bootstrapping CIs
-└── experiments/                 # Dedicated ablation studies
-    ├── README.md                        # Overview of sensitivity analyses
-    ├── ablation_feature_dimensions.py   # Triage coverage vs. dimensionality tradeoff
-    └── dual_generation_consistency.py   # Consistency analysis vs. steered generation
+└── experiments/                 # Thematic progression & sensitivity studies
+    ├── README.md                                           # Detailed breakdown of experimental studies
+    ├── 01_vit_domain_adaptation_and_generative_fusion.ipynb # Phase A domain adaptation & Phase B fusion
+    ├── 02_clinical_decoding_and_hallucination_steering.ipynb# Logit steering, dual-pass consistency & priors
+    └── 03_triage_gate_evolution_and_feature_ablations.ipynb # CLS vs Mean-Pool gating & coverage tradeoffs
 ```
 
 ---
