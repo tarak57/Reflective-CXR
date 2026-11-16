@@ -1,0 +1,17 @@
+# Ignore large binary data
+*.npy
+*.zip
+*.pkl
+# Data directories
+data/
+# Model checkpoints
+*.pt
+*.ckpt
+# OS files
+.DS_Store
+Thumbs.db
+# Python cache
+__pycache__/
+*.pyc
+# Jupyter checkpoints
+.ipynb_checkpoints/
